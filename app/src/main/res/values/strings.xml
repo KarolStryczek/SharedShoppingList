@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Shopping List With Splittt</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="logIN">LogIn</string>
+    <string name="register">Register</string>
+    <string name="registerInfoText">Please complete :) </string>
+    <string name="emial">Email</string>
+    <string name="phone">Phone</string>
+</resources>

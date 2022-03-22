@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register.RegisterActivity">
+
+    <TextView
+        android:id="@+id/registerInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="@string/registerInfoText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+    <EditText
+        android:id="@+id/loginRegisterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/login"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/registerInfo"
+        app:layout_constraintStart_toStartOf="@+id/registerInfo"
+        app:layout_constraintTop_toBottomOf="@+id/registerInfo" />
+
+    <EditText
+        android:id="@+id/passwordRegisterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginRegisterTxt"
+        app:layout_constraintStart_toStartOf="@+id/loginRegisterTxt"
+        app:layout_constraintTop_toBottomOf="@+id/loginRegisterTxt" />
+
+    <EditText
+        android:id="@+id/emailRegisterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/emial"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/passwordRegisterTxt"
+        app:layout_constraintStart_toStartOf="@+id/passwordRegisterTxt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterTxt" />
+
+    <EditText
+        android:id="@+id/phoneRegisterTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/emailRegisterTxt"
+        app:layout_constraintStart_toStartOf="@+id/emailRegisterTxt"
+        app:layout_constraintTop_toBottomOf="@+id/emailRegisterTxt" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="@+id/phoneRegisterTxt"
+        app:layout_constraintStart_toStartOf="@+id/phoneRegisterTxt"
+        app:layout_constraintTop_toBottomOf="@+id/phoneRegisterTxt"
+        android:layout_marginTop="30dp"
+        android:onClick="makeRegistrationClick"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="60dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
