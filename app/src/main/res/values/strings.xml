@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shopping List With Splittt</string>
+    <string name="app_name">Shopping List</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="logIN">LogIn</string>
@@ -7,4 +7,13 @@
     <string name="registerInfoText">Please complete :) </string>
     <string name="emial">Email</string>
     <string name="phone">Phone</string>
+    <string name="newList">What you want to do?</string>
+    <string name="joinList">Join list</string>
+    <string name="createList">Create new list</string>
+    <string name="listName">List name</string>
+    <string name="apply">Apply</string>
+    <string name="passCode">Pass code from other member</string>
+    <string name="join">Join</string>
+    <string name="addListBtn">Join or Create new List</string>
+    <string name="listCode">Code</string>
 </resources>
