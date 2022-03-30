@@ -13,4 +13,7 @@ public class AppConfig {
 
     @Value("${user.login.session.id.length}")
     Integer sessionIdLength;
+
+    @Value("${list.code.length}")
+    Integer listCodeLength;
 }
