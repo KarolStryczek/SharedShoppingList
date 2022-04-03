@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:id="@+id/listsProductParent"
+    app:cardElevation="1dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginBottom="1dp"
+    android:minHeight="150dp"
+    app:cardCornerRadius="15dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:minHeight="100dp">
+
+
+        <TextView
+            android:id="@+id/productItemNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:maxWidth="200dp"
+            android:minWidth="100dp"
+            android:text="@string/productName"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/productItemByTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productBy"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:maxWidth="200dp"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/productItemNameTxt"
+            app:layout_constraintStart_toStartOf="@+id/productItemNameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt" />
+
+        <TextView
+            android:id="@+id/productItemShopTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productShop"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:maxWidth="200dp"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/productItemByTxt"
+            app:layout_constraintStart_toStartOf="@+id/productItemByTxt"
+            app:layout_constraintTop_toBottomOf="@+id/productItemByTxt" />
+
+        <TextView
+            android:id="@+id/productItemNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productNum"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:maxWidth="200dp"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/productItemShopTxt"
+            app:layout_constraintStart_toStartOf="@+id/productItemShopTxt"
+            app:layout_constraintTop_toBottomOf="@+id/productItemShopTxt" />
+
+        <TextView
+            android:id="@+id/productItemCostTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productCost"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:maxWidth="200dp"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/productItemNumTxt"
+            app:layout_constraintStart_toStartOf="@+id/productItemNumTxt"
+            app:layout_constraintTop_toBottomOf="@+id/productItemNumTxt" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

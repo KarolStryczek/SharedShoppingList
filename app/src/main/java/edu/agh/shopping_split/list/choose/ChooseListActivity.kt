@@ -52,7 +52,9 @@ class ChooseListActivity : AppCompatActivity() {
             call.enqueue(object : Callback<ShoppingListsResponse?> {
                 override fun onResponse(call: Call<ShoppingListsResponse?>, response: Response<ShoppingListsResponse?>) {
                     val responseBody: List<ListItem>? = response.body()?.lists
-                    adapter = ListRecycleViewAdapter(responseBody?: listOf())
+                    adapter = ListRecycleViewAdapter(
+                        this@ChooseListActivity, responseBody?: listOf(), newSession
+                    )
                     recyclerView.adapter = adapter
                     recyclerView.layoutManager = LinearLayoutManager(this@ChooseListActivity)
                 }

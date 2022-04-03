@@ -15,5 +15,11 @@
     <string name="passCode">Pass code from other member</string>
     <string name="join">Join</string>
     <string name="addListBtn">Join or Create new List</string>
+    <string name="addProductBtn">Add Product</string>
     <string name="listCode">Code</string>
+    <string name="productName">Product Name</string>
+    <string name="productBy">By</string>
+    <string name="productShop">Suggested purchase place</string>
+    <string name="productNum">Num</string>
+    <string name="productCost">Product predicted cost</string>
 </resources>

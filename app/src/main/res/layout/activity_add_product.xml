@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".list.products.AddProductActivity">
+
+    <EditText
+        android:id="@+id/productNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+
+        android:hint="@string/productName"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/productByTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+        android:hint="@string/productBy"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/productNameTxt"
+        app:layout_constraintStart_toStartOf="@+id/productNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productNameTxt" />
+
+    <EditText
+        android:id="@+id/productShopTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+        android:hint="@string/productShop"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/productByTxt"
+        app:layout_constraintStart_toStartOf="@+id/productByTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productByTxt" />
+
+    <EditText
+        android:id="@+id/productNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+        android:hint="@string/productNum"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/productShopTxt"
+        app:layout_constraintStart_toStartOf="@+id/productShopTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productShopTxt" />
+
+    <EditText
+        android:id="@+id/productCostTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+        android:hint="@string/productCost"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/productNumTxt"
+        app:layout_constraintStart_toStartOf="@+id/productNumTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productNumTxt" />
+
+    <Button
+        android:id="@+id/addProductClickBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addProductBtn"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/productCostTxt"
+        app:layout_constraintStart_toStartOf="@+id/productCostTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productCostTxt"
+        android:onClick="applyProductClick"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
