@@ -10,8 +10,10 @@ import edu.agh.shopping_split.list.products.dto.ProductItem
 import edu.agh.shopping_split.R
 import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
+import edu.agh.shopping_split.dto.request.MarkProductRequest
 import edu.agh.shopping_split.dto.response.ProductsListResponse
 import edu.agh.shopping_split.list.choose.ChooseListActivity
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -73,6 +75,16 @@ class ProductListActivity : AppCompatActivity() {
             }
 
         startActivity(intent)
+    }
+
+    fun createReceiptClick(view: View) {
+        val restClient: ShoppingRestClient = RestClientFactory.getInstance()
+        val call = restClient.createReceipt(session, listCode)
+
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {}
+        })
     }
 
 }

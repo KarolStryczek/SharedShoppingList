@@ -73,4 +73,10 @@ public interface ShoppingRestClient {
             @Header("session-id") String sessionId,
             @Path(value = "listCode") String listCode
     );
+
+    @GET("/list/{listCode}/receipt")
+    Call<ResponseBody> createReceipt(
+            @Header("session-id") String sessionId,
+            @Path(value = "listCode") String listCode
+    );
 }
