@@ -37,7 +37,12 @@ public class ProductListController extends AbstractExceptionHandler {
     @GetMapping("/all")
     public ShoppingListResponse getAllUserLists(@RequestHeader("session-id") String sessionId) throws ApplicationException {
         return new ShoppingListResponse(shoppingListService.getAllUserLists(sessionId).stream()
-                .map(list -> new ShoppingListDto(list.getName(), list.getCode()))
+                .map(list -> new ShoppingListDto(list.getName(), list.getCode(), null))
                 .collect(Collectors.toList()));
+    }
+
+    @GetMapping("/{listCode}")
+    public ShoppingListDto getProductList(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
+        return ShoppingListDto.prepare(shoppingListService.getProductList(sessionId, listCode));
     }
 }

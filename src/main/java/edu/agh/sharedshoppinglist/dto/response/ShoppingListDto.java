@@ -1,10 +1,14 @@
 package edu.agh.sharedshoppinglist.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.agh.sharedshoppinglist.model.ShoppingList;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @AllArgsConstructor
@@ -13,5 +17,13 @@ import lombok.experimental.FieldDefaults;
 public class ShoppingListDto {
     String name;
     String code;
-    // TODO add products
+    List<ProductResponse> products;
+
+    public static ShoppingListDto prepare(ShoppingList shoppingList) {
+        List<ProductResponse> products = shoppingList.getProducts()
+                .stream()
+                .map(ProductResponse::prepare)
+                .collect(Collectors.toList());
+        return new ShoppingListDto(shoppingList.getName(), shoppingList.getCode(), products);
+    }
 }

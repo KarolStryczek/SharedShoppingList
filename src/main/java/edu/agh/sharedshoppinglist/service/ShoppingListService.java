@@ -73,5 +73,12 @@ public class ShoppingListService {
         Session session = sessionService.getActiveSessionById(sessionId);
         return session.getUser().getLists();
     }
+
+    public ShoppingList getProductList(String sessionId, String listCode) throws ApplicationException {
+        Session session = sessionService.getActiveSessionById(sessionId);
+        return session.getUser().getLists().stream()
+                .filter(list -> list.getCode().equals(listCode))
+                .findFirst().orElseThrow(() -> new ApplicationException(ErrorCode.INVALID_LIST_CODE));
+    }
     // </editor-fold
 }

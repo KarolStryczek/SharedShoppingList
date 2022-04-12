@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,5 +20,7 @@ public class ShoppingList {
 
     String name;
 
-    // TODO add products
+    @OrderBy("id")
+    @OneToMany(mappedBy="list")
+    List<Product> products;
 }
