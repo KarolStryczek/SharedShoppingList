@@ -4,33 +4,28 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Builder
-@Table(name = "products")
+@Table(name = "receipts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Receipt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @ManyToOne
-    @JoinColumn(name="list_code")
-    ShoppingList list;
+    @JoinColumn(name="user_login")
+    User user;
 
-    String name;
-    String by;
-    String shop;
-    Double number;
-    Double cost;
-    boolean marked;
+    Double price;
 
-    @ManyToOne
-    @JoinColumn(name="receipt_id")
-    Receipt receipt;
+    @OneToMany(mappedBy="receipt")
+    List<Product> products;
 
 }
