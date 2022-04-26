@@ -23,4 +23,9 @@ public class ShoppingList {
     @OrderBy("id")
     @OneToMany(mappedBy="list")
     List<Product> products;
+
+    @OrderBy("id")
+    @OneToMany(mappedBy="list")
+    List<Receipt> receipts;
+
 }

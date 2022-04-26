@@ -25,6 +25,10 @@ public class Receipt {
 
     Double price;
 
+    @ManyToOne
+    @JoinColumn(name="list_code")
+    ShoppingList list;
+
     @OneToMany(mappedBy="receipt")
     List<Product> products;
 
