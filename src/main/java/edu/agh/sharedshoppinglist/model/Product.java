@@ -27,7 +27,7 @@ public class Product {
     String shop;
     Double number;
     Double cost;
-    boolean marked;
+    String markedBy;
 
     @ManyToOne
     @JoinColumn(name="receipt_id")

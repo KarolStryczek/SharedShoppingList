@@ -1,6 +1,7 @@
 package edu.agh.sharedshoppinglist.dto.response;
 
 import edu.agh.sharedshoppinglist.model.Product;
+import edu.agh.sharedshoppinglist.model.Session;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,16 +18,22 @@ public class ProductResponse {
     String shop;
     Double number;
     Double cost;
-    boolean marked;
+    Integer marked;
 
-    public static ProductResponse prepare(Product product) {
+    public static ProductResponse prepare(Session session, Product product) {
+        String currentUser = session.getUser().getLogin();
+
+        Integer markedFlag = product.getMarkedBy() == null
+                ? 0
+                : product.getMarkedBy().equals(currentUser) ? 1 : 2;
+
         return ProductResponse.builder()
                 .name(product.getName())
                 .by(product.getBy())
                 .shop(product.getShop())
                 .number(product.getNumber())
                 .cost(product.getCost())
-                .marked(product.isMarked())
+                .marked(markedFlag)
                 .build();
     }
 }

@@ -3,6 +3,7 @@ package edu.agh.sharedshoppinglist.service;
 import edu.agh.sharedshoppinglist.exception.ApplicationException;
 import edu.agh.sharedshoppinglist.exception.ErrorCode;
 import edu.agh.sharedshoppinglist.model.Product;
+import edu.agh.sharedshoppinglist.model.Session;
 import edu.agh.sharedshoppinglist.model.ShoppingList;
 import edu.agh.sharedshoppinglist.repository.ProductRepository;
 import lombok.AccessLevel;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     ShoppingListService shoppingListService;
+    SessionService sessionService;
 
     ProductRepository productRepository;
 
@@ -29,9 +31,26 @@ public class ProductService {
         productRepository.delete(getProduct(sessionId, listCode, productIndex));
     }
 
-    public void markProduct(String sessionId, String listCode, Integer productIndex, Boolean isMarked) throws ApplicationException {
+    public void markProduct(String sessionId, String listCode, Integer productIndex, Boolean mark) throws ApplicationException {
+        Session session = sessionService.getActiveSessionById(sessionId);
+        String userLogin = session.getUser().getLogin();
+
         Product product = getProduct(sessionId, listCode, productIndex);
-        product.setMarked(isMarked);
+
+        if (mark) {
+            if (product.getMarkedBy() != null && !product.getMarkedBy().equals(userLogin)) {
+                throw new ApplicationException(ErrorCode.PRODUCT_ALREADY_MARKED_BY_ANOTHER_USER);
+            } else {
+                product.setMarkedBy(userLogin);
+            }
+        } else {
+            if (product.getMarkedBy() != null && !userLogin.equals(product.getMarkedBy())) {
+                throw new ApplicationException(ErrorCode.CANNOT_UNMARK_OTHER_USER_PRODUCT);
+            } else {
+                product.setMarkedBy(null);
+            }
+        }
+
         productRepository.save(product);
     }
 

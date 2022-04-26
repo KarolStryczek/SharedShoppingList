@@ -5,6 +5,8 @@ import edu.agh.sharedshoppinglist.dto.request.JoinListForm;
 import edu.agh.sharedshoppinglist.dto.response.ShoppingListDto;
 import edu.agh.sharedshoppinglist.dto.response.ShoppingListResponse;
 import edu.agh.sharedshoppinglist.exception.ApplicationException;
+import edu.agh.sharedshoppinglist.model.Session;
+import edu.agh.sharedshoppinglist.service.SessionService;
 import edu.agh.sharedshoppinglist.service.ShoppingListService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 public class ProductListController extends AbstractExceptionHandler {
 
     ShoppingListService shoppingListService;
+    SessionService sessionService;
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -43,6 +46,7 @@ public class ProductListController extends AbstractExceptionHandler {
 
     @GetMapping("/{listCode}")
     public ShoppingListDto getProductList(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
-        return ShoppingListDto.prepare(shoppingListService.getProductList(sessionId, listCode));
+        Session session = sessionService.getActiveSessionById(sessionId);
+        return ShoppingListDto.prepare(session, shoppingListService.getProductList(sessionId, listCode));
     }
 }

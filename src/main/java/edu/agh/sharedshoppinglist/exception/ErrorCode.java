@@ -6,6 +6,8 @@ public enum ErrorCode {
     INVALID_SESSION(103, "Invalid session"),
     INVALID_LIST_CODE(105, "Invalid list code"),
     INVALID_PRODUCT_INDEX(106, "Invalid product index"),
+    PRODUCT_ALREADY_MARKED_BY_ANOTHER_USER(107, "Product is already marked by another user"),
+    CANNOT_UNMARK_OTHER_USER_PRODUCT(108, "Cannot unmark product marked by different user"),
     UNKNOWN_ERROR(999, "Unknown error");
 
     private int code;

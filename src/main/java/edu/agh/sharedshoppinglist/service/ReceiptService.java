@@ -26,7 +26,7 @@ public class ReceiptService {
                 .user(sessionService.getActiveSessionById(sessionId).getUser())
                 .build();
 
-        List<Product> products = productRepository.getAllByListCodeAndMarkedTrue(listCode);
+        List<Product> products = productRepository.getAllByListCodeAndMarkedBy(listCode, receipt.getUser().getLogin());
         products.forEach(p -> p.setReceipt(receipt));
         receiptRepository.save(receipt);
     }
