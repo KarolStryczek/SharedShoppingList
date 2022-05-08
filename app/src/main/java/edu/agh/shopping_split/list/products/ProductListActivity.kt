@@ -1,5 +1,6 @@
 package edu.agh.shopping_split.list.products
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,18 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.DialogInterface
+
+
+import android.widget.EditText
+
+import android.view.ViewGroup
+
+import android.view.LayoutInflater
+import android.widget.Toast
+import androidx.core.view.marginBottom
+import com.google.android.material.textfield.TextInputLayout
+
 
 class ProductListActivity : AppCompatActivity() {
 
@@ -80,6 +93,28 @@ class ProductListActivity : AppCompatActivity() {
     fun createReceiptClick(view: View) {
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()
         val call = restClient.createReceipt(session, listCode)
+        val input = EditText(this@ProductListActivity)
+        input.hint = "Price"
+        input.gravity = 0x11
+        input.setPadding(0,
+            resources.getDimensionPixelOffset(R.dimen.material_filled_edittext_font_1_3_padding_bottom),
+            0,
+            resources.getDimensionPixelOffset(R.dimen.material_filled_edittext_font_1_3_padding_bottom)
+        )
+        input.inputType = 0x00002002
+
+        val alert = AlertDialog.Builder(this@ProductListActivity)
+            .setTitle("Receipt price")
+            .setView(input)
+            .setPositiveButton("Submit") { dialog, _ ->
+                Toast.makeText(this@ProductListActivity, "Added with price ${input.text}", Toast.LENGTH_SHORT).show()
+                dialog.cancel()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.cancel()
+            }.create()
+
+        alert.show()
 
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
