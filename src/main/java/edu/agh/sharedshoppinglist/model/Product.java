@@ -20,6 +20,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="list_code")
+    @ToString.Exclude
     ShoppingList list;
 
     String name;
@@ -31,6 +32,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="receipt_id")
+    @ToString.Exclude
     Receipt receipt;
 
 }

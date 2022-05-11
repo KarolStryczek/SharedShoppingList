@@ -36,14 +36,11 @@ public class ReceiptService {
         List<Product> products = productRepository.getAllByListCodeAndMarkedBy(listCode, receipt.getUser().getLogin());
         products.forEach(p -> p.setReceipt(receipt));
         receiptRepository.save(receipt);
+        shoppingListService.updateListUsersBalances(shoppingList, receipt);
     }
 
     public List<Receipt> getReceipts(String sessionId, String listCode) {
-        Session session = sessionService.getActiveSessionById(sessionId);
-        ShoppingList userList = session.getUser().getLists()
-                .stream()
-                .filter(list -> list.getCode().equals(listCode)).findFirst().orElse(null);
-
+        ShoppingList userList = shoppingListService.getProductList(sessionId, listCode);
         return userList != null ? userList.getReceipts() : Collections.emptyList();
     }
 }

@@ -2,6 +2,7 @@ package edu.agh.sharedshoppinglist.controller;
 
 import edu.agh.sharedshoppinglist.dto.request.CreateListForm;
 import edu.agh.sharedshoppinglist.dto.request.JoinListForm;
+import edu.agh.sharedshoppinglist.dto.response.UserBalanceDto;
 import edu.agh.sharedshoppinglist.dto.response.ShoppingListDto;
 import edu.agh.sharedshoppinglist.dto.response.ShoppingListResponse;
 import edu.agh.sharedshoppinglist.exception.ApplicationException;
@@ -14,6 +15,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,5 +50,11 @@ public class ProductListController extends AbstractExceptionHandler {
     public ShoppingListDto getProductList(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
         Session session = sessionService.getActiveSessionById(sessionId);
         return ShoppingListDto.prepare(session, shoppingListService.getProductList(sessionId, listCode));
+    }
+
+    @GetMapping("/{listCode}/users")
+    @ResponseBody
+    public List<UserBalanceDto> getListUsers(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
+        return shoppingListService.getListUsers(sessionId, listCode);
     }
 }

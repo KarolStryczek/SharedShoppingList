@@ -29,7 +29,7 @@ public class Receipt {
     @JoinColumn(name="list_code")
     ShoppingList list;
 
-    @OneToMany(mappedBy="receipt")
+    @OneToMany(mappedBy="receipt", cascade = CascadeType.ALL)
     List<Product> products;
 
 }
