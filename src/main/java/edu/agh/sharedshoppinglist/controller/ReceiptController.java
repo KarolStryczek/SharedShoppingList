@@ -14,18 +14,18 @@ import java.util.stream.Collectors;
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-@RequestMapping("/list")
+@RequestMapping("/list/{listCode}/receipt")
 public class ReceiptController {
 
     ReceiptService receiptService;
 
-    @PostMapping("/{listCode}/receipt")
+    @PostMapping("")
     public void createReceipt(@RequestHeader("session-id") String sessionId, @PathVariable String listCode, @RequestBody CreateReceiptForm form) {
         receiptService.createReceipt(sessionId, listCode, form.getPrice());
     }
 
     @ResponseBody
-    @GetMapping("/{listCode}/receipt/list")
+    @GetMapping("/list")
     public List<ReceiptDto> getUserListReceipts(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
         return receiptService.getReceipts(sessionId, listCode).stream()
                 .map(receipt -> new ReceiptDto(receipt.getUser().getLogin(), receipt.getPrice()))

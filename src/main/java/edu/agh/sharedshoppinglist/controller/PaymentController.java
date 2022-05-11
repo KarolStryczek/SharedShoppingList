@@ -14,18 +14,18 @@ import java.util.stream.Collectors;
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-@RequestMapping("/list")
+@RequestMapping("/list/{listCode}/payment")
 public class PaymentController {
 
     PaymentService paymentService;
 
-    @PostMapping("/{listCode}/payment")
+    @PostMapping("")
     public void createPayment(@RequestHeader("session-id") String sessionId, @PathVariable String listCode, @RequestBody PaymentForm form) {
         paymentService.createPayment(sessionId, listCode, form.getTargetUser(), form.getAmount());
     }
 
     @ResponseBody
-    @GetMapping("/{listCode}/payment/list")
+    @GetMapping("/list")
     public List<PaymentDto> getListPayments(@RequestHeader("session-id") String sessionId, @PathVariable String listCode) {
         return paymentService.getAllListPayments(sessionId, listCode).stream()
                 .map(payment -> new PaymentDto(payment.getSourceUser().getLogin(), payment.getTargetUser().getLogin(), payment.getAmount()))

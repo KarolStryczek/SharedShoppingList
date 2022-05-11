@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/list")
+@RequestMapping("/list/{listCode}")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProductController extends AbstractExceptionHandler {
 
     ProductService productService;
 
-    @PostMapping("/{listCode}/add")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void addProduct(@RequestHeader("session-id") String sessionId, @PathVariable String listCode, @RequestBody AddProductForm form) throws ApplicationException {
         Product product = Product.builder()
@@ -34,13 +34,13 @@ public class ProductController extends AbstractExceptionHandler {
         productService.addProductToList(sessionId, listCode, product);
     }
 
-    @PostMapping("/{listCode}/remove")
+    @PostMapping("/remove")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeProduct(@RequestHeader("session-id") String sessionId, @PathVariable String listCode, @RequestBody RemoveProductForm form) throws ApplicationException {
         productService.removeProduct(sessionId, listCode, form.getProductIndex());
     }
 
-    @PostMapping("/{listCode}/mark")
+    @PostMapping("/mark")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void markProduct(@RequestHeader("session-id") String sessionId, @PathVariable String listCode, @RequestBody MarkProductForm form) throws ApplicationException {
         productService.markProduct(sessionId, listCode, form.getProductIndex(), form.getMarked());
