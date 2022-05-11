@@ -35,6 +35,11 @@ public class ShoppingList {
     @ToString.Exclude
     List<Receipt> receipts;
 
+    @OrderBy("id")
+    @OneToMany(mappedBy="list")
+    @ToString.Exclude
+    List<Payment> payments;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "list", cascade = CascadeType.ALL)
     List<ListUser> listUsers;

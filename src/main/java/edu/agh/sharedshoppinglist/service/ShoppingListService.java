@@ -92,6 +92,18 @@ public class ShoppingListService {
         shoppingListRepository.save(list);
     }
 
+    public void updateListUsersBalances(ShoppingList list, Payment payment) {
+        for (ListUser listUser: list.getListUsers()) {
+            if (payment.getSourceUser().getLogin().equals(listUser.getUser().getLogin())) {
+                listUser.setBalance(listUser.getBalance() + payment.getAmount());
+            }
+            if (payment.getTargetUser().getLogin().equals(listUser.getUser().getLogin())) {
+                listUser.setBalance(listUser.getBalance() - payment.getAmount());
+            }
+        }
+        shoppingListRepository.save(list);
+    }
+
     public List<UserBalanceDto> getListUsers(String sessionId, String listCode) throws ApplicationException {
         ShoppingList shoppingList = getProductList(sessionId, listCode);
 
