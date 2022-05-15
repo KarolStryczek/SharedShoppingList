@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/productByTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,5 +102,6 @@
         app:layout_constraintStart_toStartOf="@+id/productCostTxt"
         app:layout_constraintTop_toBottomOf="@+id/productCostTxt"
         android:onClick="applyProductClick"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

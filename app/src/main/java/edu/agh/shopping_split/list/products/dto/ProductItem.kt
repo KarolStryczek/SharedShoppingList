@@ -6,5 +6,5 @@ data class ProductItem(
     val shop: String,
     val num: String,
     val cost: String,
-    var marked: Boolean
+    var marked: Int
 )

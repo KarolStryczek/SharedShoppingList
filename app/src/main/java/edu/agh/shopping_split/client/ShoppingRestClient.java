@@ -1,7 +1,10 @@
 package edu.agh.shopping_split.client;
 
+import java.util.List;
+
 import edu.agh.shopping_split.dto.request.AddProductRequest;
 import edu.agh.shopping_split.dto.request.CreateListRequest;
+import edu.agh.shopping_split.dto.request.CreateReceiptForm;
 import edu.agh.shopping_split.dto.request.JoinListRequest;
 import edu.agh.shopping_split.dto.request.LoginRequest;
 import edu.agh.shopping_split.dto.request.MarkProductRequest;
@@ -9,7 +12,9 @@ import edu.agh.shopping_split.dto.request.RegisterRequest;
 import edu.agh.shopping_split.dto.request.RemoveProductRequest;
 import edu.agh.shopping_split.dto.response.LoginResponse;
 import edu.agh.shopping_split.dto.response.ProductsListResponse;
+import edu.agh.shopping_split.dto.response.ReceiptResponse;
 import edu.agh.shopping_split.dto.response.ShoppingListsResponse;
+import edu.agh.shopping_split.dto.response.UserBalanceResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -74,8 +79,21 @@ public interface ShoppingRestClient {
             @Path(value = "listCode") String listCode
     );
 
-    @GET("/list/{listCode}/receipt")
+    @GET("/list/{listCode}/users")
+    Call<List<UserBalanceResponse>> getListUsers(
+            @Header("session-id") String sessionId,
+            @Path(value = "listCode") String listCode
+    );
+
+    @POST("/list/{listCode}/receipt")
     Call<ResponseBody> createReceipt(
+            @Header("session-id") String sessionId,
+            @Path(value = "listCode") String listCode,
+            @Body CreateReceiptForm createReceiptForm
+    );
+
+    @GET("/list/{listCode}/receipt/list")
+    Call<List<ReceiptResponse>> getUserListReceipts(
             @Header("session-id") String sessionId,
             @Path(value = "listCode") String listCode
     );

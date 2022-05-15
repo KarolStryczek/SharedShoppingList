@@ -29,6 +29,7 @@ class ListRecycleViewAdapter(
 ) : RecyclerView.Adapter<ListRecycleViewAdapter.ViewHolder>() {
 
     private val purple: Int = Color.parseColor("#FFBB86FC");
+    private val red: Int = Color.parseColor("#E11010");
     private val white: Int = Color.parseColor("#FFFFFFFF");
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -58,25 +59,42 @@ class ListRecycleViewAdapter(
 
 
         viewHolder.parent.setOnClickListener {
-            var marked = false
-            if (dataSet[position].marked) {
-                viewHolder.itemView.setBackgroundColor(white)
-            } else {
-                viewHolder.itemView.setBackgroundColor(purple)
-                marked = true
+            var marked = 0
+            when (dataSet[position].marked) {
+                1 -> {
+                    viewHolder.itemView.setBackgroundColor(white)
+                }
+                2 -> {
+                    viewHolder.itemView.setBackgroundColor(red)
+                    marked = 2
+                }
+                else -> {
+                    viewHolder.itemView.setBackgroundColor(purple)
+                    marked = 1
+                }
             }
-            dataSet[position].marked = marked
-            val call = restClient.markProduct(session, listCode, MarkProductRequest(position, marked))
-            call.enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {}
-            })
+
+            if (marked != 2) {
+                dataSet[position].marked = marked
+                val call = restClient.markProduct(session, listCode,
+                    MarkProductRequest(position, marked == 1))
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {}
+                })
+            }
         }
 
-        if (dataSet[position].marked) {
-            viewHolder.itemView.setBackgroundColor(purple)
-        } else {
-            viewHolder.itemView.setBackgroundColor(white)
+        when (dataSet[position].marked) {
+            1 -> {
+                viewHolder.itemView.setBackgroundColor(purple)
+            }
+            2 -> {
+                viewHolder.itemView.setBackgroundColor(red)
+            }
+            else -> {
+                viewHolder.itemView.setBackgroundColor(white)
+            }
         }
 
         viewHolder.parent.setOnLongClickListener {

@@ -14,10 +14,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+import android.widget.AutoCompleteTextView
+
+import android.widget.ArrayAdapter
+import edu.agh.shopping_split.dto.response.UserBalanceResponse
+
+
 class AddProductActivity : AppCompatActivity() {
 
     private lateinit var productNameTxt: EditText
-    private lateinit var productByTxt: EditText
+    private lateinit var productByTxt: AutoCompleteTextView
     private lateinit var productShopTxt: EditText
     private lateinit var productNumTxt: EditText
     private lateinit var productCostTxt: EditText
@@ -31,16 +37,37 @@ class AddProductActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_product)
 
         productNameTxt = findViewById(R.id.productNameTxt)
-        productByTxt = findViewById(R.id.productByTxt)
         productShopTxt = findViewById(R.id.productShopTxt)
         productNumTxt = findViewById(R.id.productNumTxt)
         productCostTxt = findViewById(R.id.productCostTxt)
+
+        val restClient: ShoppingRestClient = RestClientFactory.getInstance()
+        val call = restClient.getListUsers(session, listCode)
+
+        call.enqueue(object : Callback<List<UserBalanceResponse>?> {
+            override fun onResponse(call: Call<List<UserBalanceResponse>?>, response: Response<List<UserBalanceResponse>?>) {
+                val users : List<String> = response.body()?.map { it -> it.userLogin }!!
+                val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                    this@AddProductActivity,
+                    android.R.layout.simple_dropdown_item_1line, users
+                )
+                productByTxt = findViewById(R.id.productByTxt)
+
+                productByTxt.setAdapter(adapter)
+            }
+            override fun onFailure(call: Call<List<UserBalanceResponse>?>, t: Throwable) {
+            }
+        })
+
+
 
         val bundle: Bundle? = intent.extras;
         if (bundle != null) {
             session = bundle.getString("session")!!
             listCode = bundle.getString("listCode")!!
         }
+
+
 
     }
 

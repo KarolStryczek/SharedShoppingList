@@ -11,24 +11,16 @@ import edu.agh.shopping_split.list.products.dto.ProductItem
 import edu.agh.shopping_split.R
 import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
-import edu.agh.shopping_split.dto.request.MarkProductRequest
 import edu.agh.shopping_split.dto.response.ProductsListResponse
 import edu.agh.shopping_split.list.choose.ChooseListActivity
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.content.DialogInterface
-
 
 import android.widget.EditText
-
-import android.view.ViewGroup
-
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.core.view.marginBottom
-import com.google.android.material.textfield.TextInputLayout
+import edu.agh.shopping_split.dto.request.CreateReceiptForm
 
 
 class ProductListActivity : AppCompatActivity() {
@@ -92,7 +84,6 @@ class ProductListActivity : AppCompatActivity() {
 
     fun createReceiptClick(view: View) {
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()
-        val call = restClient.createReceipt(session, listCode)
         val input = EditText(this@ProductListActivity)
         input.hint = "Price"
         input.gravity = 0x11
@@ -107,19 +98,30 @@ class ProductListActivity : AppCompatActivity() {
             .setTitle("Receipt price")
             .setView(input)
             .setPositiveButton("Submit") { dialog, _ ->
-                Toast.makeText(this@ProductListActivity, "Added with price ${input.text}", Toast.LENGTH_SHORT).show()
-                dialog.cancel()
+                val price = input.text.toString()
+                val priceDouble : Double? = if (price.isEmpty()) null else price.toDouble()
+                val call = restClient.createReceipt(session, listCode, CreateReceiptForm(priceDouble))
+
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        Toast.makeText(this@ProductListActivity, "Added with price $price", Toast.LENGTH_SHORT).show()
+                        dialog.cancel()
+                    }
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Toast.makeText(this@ProductListActivity, "Internet connection problem :)", Toast.LENGTH_SHORT).show()
+                        dialog.cancel()
+                    }
+                })
+
             }
             .setNegativeButton("Cancel") { dialog, _ ->
+                Toast.makeText(this@ProductListActivity, "Canceled creating receipt!!!!", Toast.LENGTH_SHORT).show()
                 dialog.cancel()
             }.create()
 
         alert.show()
 
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {}
-        })
+
     }
 
 }
