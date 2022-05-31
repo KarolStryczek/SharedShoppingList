@@ -41,6 +41,12 @@ class AddProductActivity : AppCompatActivity() {
         productNumTxt = findViewById(R.id.productNumTxt)
         productCostTxt = findViewById(R.id.productCostTxt)
 
+        val bundle: Bundle? = intent.extras;
+        if (bundle != null) {
+            session = bundle.getString("session")!!
+            listCode = bundle.getString("listCode")!!
+        }
+
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()
         val call = restClient.getListUsers(session, listCode)
 
@@ -58,17 +64,6 @@ class AddProductActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<UserBalanceResponse>?>, t: Throwable) {
             }
         })
-
-
-
-        val bundle: Bundle? = intent.extras;
-        if (bundle != null) {
-            session = bundle.getString("session")!!
-            listCode = bundle.getString("listCode")!!
-        }
-
-
-
     }
 
     fun applyProductClick(view: View) {
