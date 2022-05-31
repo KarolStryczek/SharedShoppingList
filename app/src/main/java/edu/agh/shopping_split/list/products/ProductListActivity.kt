@@ -106,10 +106,12 @@ class ProductListActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                         Toast.makeText(this@ProductListActivity, "Added with price $price", Toast.LENGTH_SHORT).show()
                         dialog.cancel()
+                        this@ProductListActivity.recreate()
                     }
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         Toast.makeText(this@ProductListActivity, "Internet connection problem :)", Toast.LENGTH_SHORT).show()
                         dialog.cancel()
+                        this@ProductListActivity.recreate()
                     }
                 })
 
