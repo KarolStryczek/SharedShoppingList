@@ -33,7 +33,7 @@
         android:id="@+id/addProductBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/purple_200"
         android:contentDescription="@string/addListBtn"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
