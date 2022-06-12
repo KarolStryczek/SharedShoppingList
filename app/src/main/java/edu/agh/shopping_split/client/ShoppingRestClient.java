@@ -8,9 +8,11 @@ import edu.agh.shopping_split.dto.request.CreateReceiptForm;
 import edu.agh.shopping_split.dto.request.JoinListRequest;
 import edu.agh.shopping_split.dto.request.LoginRequest;
 import edu.agh.shopping_split.dto.request.MarkProductRequest;
+import edu.agh.shopping_split.dto.request.PaymentForm;
 import edu.agh.shopping_split.dto.request.RegisterRequest;
 import edu.agh.shopping_split.dto.request.RemoveProductRequest;
 import edu.agh.shopping_split.dto.response.LoginResponse;
+import edu.agh.shopping_split.dto.response.PaymentResponse;
 import edu.agh.shopping_split.dto.response.ProductsListResponse;
 import edu.agh.shopping_split.dto.response.ReceiptResponse;
 import edu.agh.shopping_split.dto.response.ShoppingListsResponse;
@@ -94,6 +96,19 @@ public interface ShoppingRestClient {
 
     @GET("/list/{listCode}/receipt/list")
     Call<List<ReceiptResponse>> getUserListReceipts(
+            @Header("session-id") String sessionId,
+            @Path(value = "listCode") String listCode
+    );
+
+    @POST("/list/{listCode}/payment")
+    Call<ResponseBody> createPayment(
+            @Header("session-id") String sessionId,
+            @Path(value = "listCode") String listCode,
+            @Body PaymentForm paymentForm
+    );
+
+    @GET("/list/{listCode}/payment/list")
+    Call<List<PaymentResponse>> getListPayments(
             @Header("session-id") String sessionId,
             @Path(value = "listCode") String listCode
     );

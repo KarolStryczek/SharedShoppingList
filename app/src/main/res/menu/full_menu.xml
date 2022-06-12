@@ -1,0 +1,29 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_receipt"
+        android:icon="@drawable/ic_receipt"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="@string/receipt"
+        />
+
+
+    <item
+        android:id="@+id/action_payment"
+        android:icon="@drawable/ic_payment"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="@string/payment"
+        />
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_logout_2"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="@string/logout"
+        />
+
+</menu>

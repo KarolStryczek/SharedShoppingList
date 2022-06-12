@@ -22,4 +22,12 @@
     <string name="productShop">Suggested purchase place</string>
     <string name="productNum">Num</string>
     <string name="productCost">Product predicted cost</string>
+    <string name="logout">logout</string>
+    <string name="payment">payment</string>
+    <string name="receipt">receipt</string>
+    <string name="paymentTo">Payment To</string>
+    <string name="paymentBy">Payment To</string>
+    <string name="paymentAmount">Payment Amount</string>
+    <string name="receiptUser">Receipt By</string>
+    <string name="receiptAmount">Receipt Amount</string>
 </resources>

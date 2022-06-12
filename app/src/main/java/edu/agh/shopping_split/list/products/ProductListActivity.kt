@@ -4,6 +4,9 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +24,9 @@ import retrofit2.Response
 import android.widget.EditText
 import android.widget.Toast
 import edu.agh.shopping_split.dto.request.CreateReceiptForm
+import edu.agh.shopping_split.login.LoginActivity
+import edu.agh.shopping_split.payment.PaymentListActivity
+import edu.agh.shopping_split.receipt.ReceiptListActivity
 
 
 class ProductListActivity : AppCompatActivity() {
@@ -29,7 +35,53 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var session: String
     private lateinit var listCode: String
     private lateinit var adapter: ListRecycleViewAdapter
+    private lateinit var logoutItem: MenuItem
+    private lateinit var paymentItem: MenuItem
+    private lateinit var receiptItem: MenuItem
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.full_menu, menu)
+        if (menu != null) {
+            paymentItem = menu.findItem(R.id.action_payment)
+            logoutItem = menu.findItem(R.id.action_logout)
+            receiptItem = menu.findItem(R.id.action_receipt)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item) {
+            paymentItem -> {
+                val intent = Intent(this@ProductListActivity, PaymentListActivity::class.java)
+                    .apply {
+                        putExtra("session", session)
+                        putExtra("listCode", listCode)
+                    }
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
+            }
+            logoutItem -> {
+                Toast.makeText(this@ProductListActivity, "Successfully logged out!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@ProductListActivity, LoginActivity::class.java)
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
+            }
+            receiptItem -> {
+                val intent = Intent(this@ProductListActivity, ReceiptListActivity::class.java)
+                    .apply {
+                        putExtra("session", session)
+                        putExtra("listCode", listCode)
+                    }
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
+            }
+            else -> {
+                Toast.makeText(this@ProductListActivity, "Unknown action restart app!!", Toast.LENGTH_SHORT).show()
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
