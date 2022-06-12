@@ -6,4 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".payment.CreatePaymentActivity">
 
+
+    <AutoCompleteTextView
+        android:id="@+id/paymentMakerTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+
+        android:hint="@string/paymentTo"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/paymentAmountTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:minHeight="50dp"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        android:gravity="center"
+        android:hint="@string/paymentAmount"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/paymentMakerTxt"
+        app:layout_constraintStart_toStartOf="@+id/paymentMakerTxt"
+        app:layout_constraintTop_toBottomOf="@+id/paymentMakerTxt" />
+
+
+
+    <Button
+        android:id="@+id/addProductClickBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addPaymentBtn"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/paymentAmountTxt"
+        app:layout_constraintStart_toStartOf="@+id/paymentAmountTxt"
+        app:layout_constraintTop_toBottomOf="@+id/paymentAmountTxt"
+        android:onClick="applyPaymentClick"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

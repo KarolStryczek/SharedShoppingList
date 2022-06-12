@@ -16,6 +16,7 @@
     <string name="join">Join</string>
     <string name="addListBtn">Join or Create new List</string>
     <string name="addProductBtn">Add Product</string>
+    <string name="addPaymentBtn">Add Payment</string>
     <string name="listCode">Code</string>
     <string name="productName">Product Name</string>
     <string name="productBy">By</string>

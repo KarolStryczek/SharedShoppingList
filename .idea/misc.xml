@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Marcin/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_dropdown_item_1line.xml" value="0.3765625" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_add_product.xml" value="0.2692502532928065" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_choose_list.xml" value="0.1" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_create_payment.xml" value="0.38125" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_join_list.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_login.xml" value="0.2692502532928065" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_new_list.xml" value="0.2692502532928065" />
