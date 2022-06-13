@@ -53,7 +53,7 @@ class ListRecycleViewAdapter(
         viewHolder.productNameTxt.text = dataSet[position].name
         viewHolder.productByTxt.text = dataSet[position].by
         viewHolder.productShopTxt.text = dataSet[position].shop
-        viewHolder.productNumTxt.text = dataSet[position].num
+        viewHolder.productNumTxt.text = dataSet[position].number
         viewHolder.productCostTxt.text = dataSet[position].cost
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()
 
