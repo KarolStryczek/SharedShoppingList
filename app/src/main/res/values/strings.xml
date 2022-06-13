@@ -27,8 +27,10 @@
     <string name="payment">payment</string>
     <string name="receipt">receipt</string>
     <string name="paymentTo">Payment To</string>
-    <string name="paymentBy">Payment To</string>
+    <string name="paymentBy">Payment By</string>
     <string name="paymentAmount">Payment Amount</string>
     <string name="receiptUser">Receipt By</string>
     <string name="receiptAmount">Receipt Amount</string>
+    <string name="balanceUser">Owner</string>
+    <string name="balanceAmount">Amount</string>
 </resources>

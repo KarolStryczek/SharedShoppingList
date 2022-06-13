@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Shopping_split"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".balance.BalanceListActivity"
+            android:exported="false" />
+        <activity
             android:name=".receipt.ReceiptListActivity"
             android:exported="false" />
         <activity

@@ -23,6 +23,7 @@ import retrofit2.Response
 
 import android.widget.EditText
 import android.widget.Toast
+import edu.agh.shopping_split.balance.BalanceListActivity
 import edu.agh.shopping_split.dto.request.CreateReceiptForm
 import edu.agh.shopping_split.login.LoginActivity
 import edu.agh.shopping_split.payment.PaymentListActivity
@@ -36,24 +37,22 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var listCode: String
     private lateinit var adapter: ListRecycleViewAdapter
     private lateinit var logoutItem: MenuItem
-    private lateinit var paymentItem: MenuItem
-    private lateinit var receiptItem: MenuItem
+    private lateinit var balanceItem: MenuItem
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.full_menu, menu)
+        inflater.inflate(R.menu.part_menu, menu)
         if (menu != null) {
-            paymentItem = menu.findItem(R.id.action_payment)
+            balanceItem = menu.findItem(R.id.action_balance)
             logoutItem = menu.findItem(R.id.action_logout)
-            receiptItem = menu.findItem(R.id.action_receipt)
         }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item) {
-            paymentItem -> {
-                val intent = Intent(this@ProductListActivity, PaymentListActivity::class.java)
+            balanceItem -> {
+                val intent = Intent(this@ProductListActivity, BalanceListActivity::class.java)
                     .apply {
                         putExtra("session", session)
                         putExtra("listCode", listCode)
@@ -64,15 +63,6 @@ class ProductListActivity : AppCompatActivity() {
             logoutItem -> {
                 Toast.makeText(this@ProductListActivity, "Successfully logged out!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@ProductListActivity, LoginActivity::class.java)
-                startActivity(intent)
-                return super.onOptionsItemSelected(item)
-            }
-            receiptItem -> {
-                val intent = Intent(this@ProductListActivity, ReceiptListActivity::class.java)
-                    .apply {
-                        putExtra("session", session)
-                        putExtra("listCode", listCode)
-                    }
                 startActivity(intent)
                 return super.onOptionsItemSelected(item)
             }

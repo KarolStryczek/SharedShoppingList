@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Marcin/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_dropdown_item_1line.xml" value="0.3765625" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/drawable-anydpi/ic_receipt.xml" value="0.346875" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_add_product.xml" value="0.2692502532928065" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_balance_list.xml" value="0.33695652173913043" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_choose_list.xml" value="0.25" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_create_list.xml" value="0.2617753623188406" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_create_payment.xml" value="0.38125" />
@@ -16,13 +18,15 @@
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_receipt_list.xml" value="0.38125" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/activity_register.xml" value="0.2692502532928065" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/add_receipt_alert.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/balance_list_item.xml" value="0.33695652173913043" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/list_list_item.xml" value="0.2692502532928065" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/payment_list_item.xml" value="0.33" />
-        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/product_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/product_list_item.xml" value="0.5" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/receipt_input_price.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/layout/receipt_list_item.xml" value="0.2617753623188406" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/menu/full_menu.xml" value="0.3296875" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/menu/main_menu.xml" value="0.3283582089552239" />
+        <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/menu/part_menu.xml" value="0.5435185185185185" />
         <entry key="..\:/Users/Marcin/Desktop/Pulpti_v2/semestr_10/splittt/app/src/main/res/xml/network_security_config.xml" value="0.2341485507246377" />
       </map>
     </option>
