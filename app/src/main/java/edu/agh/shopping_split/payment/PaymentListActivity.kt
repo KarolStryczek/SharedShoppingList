@@ -9,6 +9,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.agh.shopping_split.R
+import edu.agh.shopping_split.balance.BalanceListActivity
 import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
 import edu.agh.shopping_split.dto.response.PaymentResponse
@@ -73,5 +74,14 @@ class PaymentListActivity : AppCompatActivity() {
 
         startActivity(intent)
 
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, BalanceListActivity::class.java)
+            .apply { putExtra("session", session) }
+            .apply { putExtra("listCode", listCode) }
+
+        startActivity(intent)
+        super.onBackPressed()
     }
 }

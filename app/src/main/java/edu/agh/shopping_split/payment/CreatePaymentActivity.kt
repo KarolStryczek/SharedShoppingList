@@ -12,6 +12,7 @@ import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
 import edu.agh.shopping_split.dto.request.PaymentForm
 import edu.agh.shopping_split.dto.response.UserBalanceResponse
+import edu.agh.shopping_split.list.choose.ChooseListActivity
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,4 +81,15 @@ class CreatePaymentActivity : AppCompatActivity() {
             }
         })
     }
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, PaymentListActivity::class.java)
+            .apply { putExtra("session", session) }
+            .apply { putExtra("listCode", listCode) }
+
+        startActivity(intent)
+        super.onBackPressed()
+    }
+
 }
