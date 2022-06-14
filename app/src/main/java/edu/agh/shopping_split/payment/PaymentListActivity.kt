@@ -43,7 +43,7 @@ class PaymentListActivity : AppCompatActivity() {
             val thisListCode = bundle.getString("listCode")!!
             session = newSession
             listCode = thisListCode
-            supportActionBar?.title = "$thisListCode payments"
+            supportActionBar?.title = "$thisListCode Payments"
 
             val call = restClient.getListPayments(newSession, thisListCode)
             call.enqueue(object : Callback<List<PaymentResponse>?> {

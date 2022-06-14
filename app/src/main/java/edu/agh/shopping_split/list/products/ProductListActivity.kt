@@ -88,6 +88,7 @@ class ProductListActivity : AppCompatActivity() {
             val thisListCode = bundle.getString("listCode")!!
             session = newSession
             listCode = thisListCode
+            supportActionBar?.title = "List $thisListCode"
             val call = restClient.getProductList(newSession, thisListCode)
             call.enqueue(object : Callback<ProductsListResponse?> {
                 override fun onResponse(call: Call<ProductsListResponse?>, response: Response<ProductsListResponse?>) {

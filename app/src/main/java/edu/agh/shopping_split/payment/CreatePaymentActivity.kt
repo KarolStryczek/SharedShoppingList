@@ -35,6 +35,7 @@ class CreatePaymentActivity : AppCompatActivity() {
         if (bundle != null) {
             session = bundle.getString("session")!!
             listCode = bundle.getString("listCode")!!
+            supportActionBar?.title = "Create payment"
         }
 
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()

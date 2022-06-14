@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import edu.agh.shopping_split.R
+import edu.agh.shopping_split.balance.BalanceListActivity
 import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
 import edu.agh.shopping_split.dto.request.LoginRequest
@@ -67,5 +68,9 @@ class LoginActivity : AppCompatActivity() {
     fun registerClick(view: View) {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+
     }
 }

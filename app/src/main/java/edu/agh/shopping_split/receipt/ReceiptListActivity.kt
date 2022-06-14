@@ -39,7 +39,7 @@ class ReceiptListActivity : AppCompatActivity() {
             val thisListCode = bundle.getString("listCode")!!
             session = newSession
             listCode = thisListCode
-            supportActionBar?.title = "$thisListCode receipt"
+            supportActionBar?.title = "$thisListCode Receipts"
 
             val call = restClient.getUserListReceipts(newSession, thisListCode)
             call.enqueue(object : Callback<List<ReceiptResponse>?> {

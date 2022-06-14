@@ -14,6 +14,7 @@ import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
 import edu.agh.shopping_split.dto.response.UserBalanceResponse
 import edu.agh.shopping_split.balance.ListRecycleViewAdapter
+import edu.agh.shopping_split.list.products.ProductListActivity
 import edu.agh.shopping_split.login.LoginActivity
 import edu.agh.shopping_split.payment.PaymentListActivity
 import edu.agh.shopping_split.receipt.ReceiptListActivity
@@ -89,7 +90,7 @@ class BalanceListActivity : AppCompatActivity() {
             val thisListCode = bundle.getString("listCode")!!
             session = newSession
             listCode = thisListCode
-            supportActionBar?.title = "$thisListCode payments"
+            supportActionBar?.title = "$thisListCode Balances"
 
             val call = restClient.getListUsers(newSession, thisListCode)
             call.enqueue(object : Callback<List<UserBalanceResponse>?> {
@@ -109,5 +110,14 @@ class BalanceListActivity : AppCompatActivity() {
             })
 
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, ProductListActivity::class.java)
+            .apply { putExtra("session", session) }
+            .apply { putExtra("listCode", listCode) }
+
+        startActivity(intent)
+        super.onBackPressed()
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.list.choose.dto.ListItem
 import edu.agh.shopping_split.R
+import edu.agh.shopping_split.balance.BalanceListActivity
 import edu.agh.shopping_split.client.RestClientFactory
 import edu.agh.shopping_split.client.ShoppingRestClient
 import edu.agh.shopping_split.dto.response.ShoppingListsResponse
@@ -52,6 +53,7 @@ class ChooseListActivity : AppCompatActivity() {
         if (bundle != null) {
             val newSession = bundle.getString("session")!!
             session = newSession
+            supportActionBar?.title = "Your lists"
             val call = restClient.getAllUserLists(newSession)
             call.enqueue(object : Callback<ShoppingListsResponse?> {
                 override fun onResponse(call: Call<ShoppingListsResponse?>, response: Response<ShoppingListsResponse?>) {
@@ -80,4 +82,7 @@ class ChooseListActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+
+    }
 }

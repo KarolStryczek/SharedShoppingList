@@ -32,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         passwordTxt = findViewById(R.id.passwordRegisterTxt)
         emailTxt = findViewById(R.id.emailRegisterTxt)
         phoneTxt = findViewById(R.id.phoneRegisterTxt)
+        supportActionBar?.title = "Register"
     }
 
     fun makeRegistrationClick(view: View) {
@@ -41,7 +42,6 @@ class RegisterActivity : AppCompatActivity() {
         val phone: String = phoneTxt.text.toString()
         val restClient: ShoppingRestClient = RestClientFactory.getInstance()
         val call = restClient.register(RegisterRequest(login, password, email, phone))
-        supportActionBar?.title = "Register"
 
 
         call.enqueue(object : Callback<ResponseBody> {
